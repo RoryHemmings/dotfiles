@@ -19,6 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Valloric/YouCompleteMe'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdcommenter'
 
 call plug#end()
 
@@ -28,16 +29,13 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
-" TODO: Load plugins here (pathogen or vundle)
+let mapleader=" "
 
 " Turn on syntax highlighting
 syntax on
 
 " For plugins to load correctly
 filetype plugin indent on
-
-" TODO: Pick a leader key
-" let mapleader = ","
 
 " Security
 set modelines=0
@@ -57,10 +55,9 @@ set encoding=utf-8
 " Whitespace
 set nowrap
 set formatoptions=tcqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+" set tabstop=2
+" set shiftwidth=2
+" set expandtab
 set noshiftround
 
 " Cursor motion
@@ -87,8 +84,6 @@ set showmode
 set showcmd
 
 " Searching
-nnoremap / /\v
-vnoremap / /\v
 set hlsearch
 set incsearch
 set ignorecase
@@ -106,7 +101,7 @@ vnoremap <F1> :set invfullscreen<CR>
 " Formatting
 map <leader>q gqip
 
-let g:ycm_min_num_of_chars_for_completion = 0
+let g:ycm_min_num_of_chars_for_completion = 2
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
@@ -152,12 +147,12 @@ endif
 " Gruvbox
 " -----------------------------------
 
-" set background=dark
+set background=dark
 
 " Set Contrast
-" let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_background = 'hard'
 
-" colorscheme gruvbox-material
+colorscheme gruvbox-material
 
 
 " -----------------------------------
@@ -165,8 +160,10 @@ endif
 " -----------------------------------
 
 " let g:airline_theme = 'miramare'
+
 " let g:miramare_enable_italic = 1
 " let g:miramare_disable_italic_comment = 1
+" let g:miramare_enable_bold = 1
 
 " colorscheme miramare
 
@@ -186,12 +183,23 @@ endif
 " Forest Night
 " -----------------------------------
 
-let g:airline_theme = 'forest_night'
-let g:forest_night_enable_italic = 1
+" let g:airline_theme = 'forest_night'
+" let g:forest_night_enable_italic = 1
 
-colorscheme forest-night
+" colorscheme forest-night
 
+" -----------------------------------
+"  One Dark
+" -----------------------------------
 
+" let g:onedark_hide_endofbuffer = 1
+" let g:ondar_termcolors = 256
+" let g:onedark_terminal_italics = 1
+
+" let g:airline_theme = 'onedark'
+
+" syntax on
+" colorscheme onedark
 
 " -----------------------------------
 " Keybinds
@@ -199,4 +207,9 @@ colorscheme forest-night
 
 map <C-o> :NERDTreeToggle<CR>
 map <C-i> :%!astyle<CR>
+" nmap <C-i> :set expandtab tabstop=2 softtabstop=2<CR>
+nmap <C-l> :noh<CR>
 
+" NERDCommenter Keybinds
+" select with visual (<leader>cc) - to comment
+" select with visual (<leader>cu) - to uncomment
