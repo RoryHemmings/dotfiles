@@ -4,10 +4,12 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 
 Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/gruvbox-material'
+Plug 'morhetz/gruvbox'
 Plug 'sainnhe/sonokai'
 Plug 'sainnhe/forest-night'
 Plug 'nightsense/seagrey'
 Plug 'franbach/miramare'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf'
@@ -147,13 +149,20 @@ endif
 " Gruvbox
 " -----------------------------------
 
-set background=dark
+" set background=dark
 
 " Set Contrast
-let g:gruvbox_material_background = 'hard'
+" let g:gruvbox_material_background = 'hard'
 
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
 
+"set background=dark
+"let g:gruvbox_italic = '1'
+"let g:gruvbox_transparent_bg = '1'
+
+"colorscheme gruvbox
+
+colorscheme dracula
 
 " -----------------------------------
 " Miramare
@@ -213,3 +222,5 @@ nmap <C-l> :noh<CR>
 " NERDCommenter Keybinds
 " select with visual (<leader>cc) - to comment
 " select with visual (<leader>cu) - to uncomment
+
+nnoremap <silent> <leader>o :FZF<CR>
