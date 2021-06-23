@@ -1,4 +1,4 @@
-call plug#begin('~/AppData/Local/nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " below are some vim plugin for demonstration purpose
 
@@ -9,7 +9,6 @@ Plug 'sainnhe/sonokai'
 Plug 'sainnhe/forest-night'
 Plug 'nightsense/seagrey'
 Plug 'franbach/miramare'
-Plug 'dracula/vim', { 'as': 'dracula' }
 
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf'
@@ -18,7 +17,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
@@ -146,23 +145,29 @@ endif
 
 
 " -----------------------------------
-" Gruvbox
+" Gruvbox Material
 " -----------------------------------
 
 " set background=dark
 
 " Set Contrast
 " let g:gruvbox_material_background = 'hard'
+" let g:airline_theme = 'gruvbox'
 
 " colorscheme gruvbox-material
 
+" -----------------------------------
+" Gruvbox
+" -----------------------------------
+
 "set background=dark
-"let g:gruvbox_italic = '1'
-"let g:gruvbox_transparent_bg = '1'
+"let g:gruvbox_italic = '0'
+"let g:gruvbox_transparent_background = '1'
+"let g:gruvbox_invert_selection = '0'
 
 "colorscheme gruvbox
 
-colorscheme dracula
+"let g:airline_theme = 'gruvbox'
 
 " -----------------------------------
 " Miramare
@@ -201,14 +206,21 @@ colorscheme dracula
 "  One Dark
 " -----------------------------------
 
-" let g:onedark_hide_endofbuffer = 1
-" let g:ondar_termcolors = 256
-" let g:onedark_terminal_italics = 1
+ let g:onedark_hide_endofbuffer = 1
+ let g:ondar_termcolors = 256
+ let g:onedark_terminal_italics = 1
 
-" let g:airline_theme = 'onedark'
+ let g:airline_theme = 'onedark'
 
-" syntax on
-" colorscheme onedark
+ syntax on
+ colorscheme onedark
+
+" -----------------------------------
+" Transparency
+" -----------------------------------
+
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE
 
 " -----------------------------------
 " Keybinds
@@ -223,4 +235,5 @@ nmap <C-l> :noh<CR>
 " select with visual (<leader>cc) - to comment
 " select with visual (<leader>cu) - to uncomment
 
-nnoremap <silent> <leader>o :FZF<CR>
+" Remove trailing whitespace
+let &fcs='eob: '
