@@ -206,14 +206,14 @@ endif
 "  One Dark
 " -----------------------------------
 
- let g:onedark_hide_endofbuffer = 1
- let g:ondar_termcolors = 256
- let g:onedark_terminal_italics = 1
+let g:onedark_hide_endofbuffer = 1
+let g:ondar_termcolors = 256
+let g:onedark_terminal_italics = 1
 
- let g:airline_theme = 'onedark'
+let g:airline_theme = 'onedark'
 
- syntax on
- colorscheme onedark
+syntax on
+colorscheme onedark
 
 " -----------------------------------
 " Transparency
