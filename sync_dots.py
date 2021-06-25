@@ -1,3 +1,5 @@
+import os
+
 def usage_exit():
     print("Invalid Config Format")
     print("Should be:")
@@ -12,7 +14,7 @@ def parse_config():
                 continue
             parts = [] 
             for part in line.split("->"):
-                parts.append(part.strip().replace('"', ''))
+                parts.append(part.strip().replace('"', '').replace('~', os.environ['HOME']))
 
             if (len(parts) > 2):
                 usage_exit()
@@ -22,10 +24,17 @@ def parse_config():
     return ret
 
 def backup_file(path_out, data):
-    with open('backup/'+path_out, 'w') as output:
-        output.write(data)
+    try:
+        with open('backup/'+path_out, 'w') as output:
+            output.write(data)
+    except FileNotFoundError:
+        print('Could not back up dotfiles')
+        print('Make sure create a backup/ sub-directory in this directory')
+        exit()
 
 def sync_file(path, path_out):
+    print("Syncing File: {} to {}".format(path, path_out))
+
     data = ''
     with open(path, 'r') as infile:
         data = infile.read()
@@ -36,8 +45,8 @@ def sync_file(path, path_out):
     with open(path_out, 'r') as outfile:
         old_data = outfile.read()
         backup_file(path + ".original", old_data)
-
-    with open(path_put, 'w') as outfile:
+    
+    with open(path_out, 'w') as outfile:
         outfile.write(data)
 
 def main():
