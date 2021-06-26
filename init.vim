@@ -1,3 +1,5 @@
+" Added from sync dots
+
 call plug#begin('~/.config/nvim/plugged')
 
 " below are some vim plugin for demonstration purpose

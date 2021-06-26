@@ -1,5 +1,0 @@
-bashrc						 -> ~/.bashrc
-init.vim           -> ~/.config/nvim/init.vim
-alacritty.yml      -> ~/.config/alacritty/alacritty.yml
-i3/config          -> ~/.config/i3/config
-polybar/config.ini -> ~/.config/polybar/config.ini

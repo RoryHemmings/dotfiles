@@ -33,28 +33,56 @@ def backup_file(path_out, data):
         exit()
 
 def sync_file(path, path_out):
-    print("Syncing File: {} to {}".format(path, path_out))
+    print("\n** Syncing File: {} to {} **".format(path, path_out))
 
     data = ''
-    with open(path, 'r') as infile:
-        data = infile.read()
 
-    if data == '':
-        print('Dotfile {} is empty'.format(path))
+    try:
+        with open(path, 'r') as infile:
+            data = infile.read()
 
-    with open(path_out, 'r') as outfile:
-        old_data = outfile.read()
-        backup_file(path + ".original", old_data)
+        if data == '':
+            print('Dotfile {} is empty'.format(path))
+
+    except FileNotFoundError:
+        print("Sync Failed: Could not open File {}".format(path))
+        return False
+
+
+    try:
+        with open(path_out, 'r') as outfile:
+            old_data = outfile.read()
+            backup_file(path + ".original", old_data)
     
-    with open(path_out, 'w') as outfile:
-        outfile.write(data)
+        with open(path_out, 'w') as outfile:
+            outfile.write(data)
+
+    except FileNotFoundError:
+        print("Sync Failed: Could not open file {}".format(path_out))
+        return False
+
+    return True
 
 def main():
     dirs = parse_config()
+
+    successful = []
+    failed = []
     for file in dirs:
-        sync_file(file, dirs[file])
+        if sync_file(file, dirs[file]):
+            successful.append((file, dirs[file]))
+        else:
+            failed.append((file, dirs[file]))
+
+    print('\n------- Sync Complete --------')
+    print('\nSucessfully synced {} Files:'.format(len(successful)))
+    for x in successful:
+        print('{} -> {}'.format(x[0], x[1]))
+
+    print('\nFailed to sync {} Files:'.format(len(failed)))
+    for x in failed:
+        print('{} -> {}'.format(x[0], x[1]))
 
 if __name__ == "__main__":
     main()
-
 

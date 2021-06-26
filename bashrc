@@ -129,4 +129,6 @@ alias py="python3"
 
 alias flagex="py ~/ctf/tools/flagex.py"
 
+xset r rate 220 50
+
 # sh ~/startup.sh
